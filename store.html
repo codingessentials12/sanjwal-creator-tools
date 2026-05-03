@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjwal Creator Tools — Professional Templates for Creators & Side Hustlers</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f1e;
+    --navy2: #111827;
+    --navy3: #1a2540;
+    --gold: #f0b429;
+    --gold2: #fcd34d;
+    --white: #f8fafc;
+    --muted: #94a3b8;
+    --card-bg: #141d35;
+    --card-border: rgba(240,180,41,0.15);
+    --green: #10b981;
+    --blue: #3b82f6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 6%;
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,180,41,0.1);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem; font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    padding: 0.55rem 1.4rem; border-radius: 50px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,180,41,0.3); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 6% 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(240,180,41,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(59,130,246,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(240,180,41,0.1); border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 500; margin-bottom: 1.8rem;
+    animation: fadeDown 0.6s ease;
+  }
+  .hero-badge::before { content: ''; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -2px; margin-bottom: 1.4rem;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  h1 .gold { color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted); max-width: 600px;
+    line-height: 1.7; margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 0.9rem 2.2rem; border-radius: 50px;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(240,180,41,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(240,180,41,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 0.9rem 2.2rem; border-radius: 50px;
+    font-weight: 500; font-size: 1rem;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--gold);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 6%; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+  /* 3D PRODUCT CARDS */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .product-card:hover {
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(240,180,41,0.08);
+    border-color: rgba(240,180,41,0.35);
+  }
+  .product-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .product-card:hover::before { opacity: 1; }
+  .card-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.2rem;
+  }
+  .icon-gold { background: rgba(240,180,41,0.12); }
+  .icon-blue { background: rgba(59,130,246,0.12); }
+  .icon-green { background: rgba(16,185,129,0.12); }
+  .icon-purple { background: rgba(139,92,246,0.12); }
+  .icon-pink { background: rgba(236,72,153,0.12); }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    margin-bottom: 0.6rem; line-height: 1.3;
+  }
+  .card-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  .card-features { list-style: none; margin-bottom: 1.8rem; }
+  .card-features li {
+    font-size: 0.85rem; color: #cbd5e1;
+    padding: 0.3rem 0; display: flex; align-items: center; gap: 8px;
+  }
+  .card-features li::before {
+    content: ''; width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(16,185,129,0.15); border: 1px solid var(--green);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%2310b981' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 10px; background-repeat: no-repeat; background-position: center;
+  }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.2rem;
+  }
+  .card-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem; font-weight: 800; color: var(--gold);
+  }
+  .card-price span { font-size: 0.9rem; color: var(--muted); font-weight: 400; font-family: 'DM Sans', sans-serif; }
+  .buy-btn {
+    background: var(--gold); color: var(--navy);
+    padding: 0.6rem 1.4rem; border-radius: 50px;
+    font-weight: 700; font-size: 0.85rem;
+    border: none; cursor: pointer; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .buy-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(240,180,41,0.35); }
+
+  /* BEST SELLER TAG */
+  .bestseller {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--gold); color: var(--navy);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+    padding: 0.3rem 0.7rem; border-radius: 50px;
+    text-transform: uppercase;
+  }
+
+  /* BUNDLE SECTION */
+  .bundle-section {
+    background: var(--card-bg);
+    border: 1px solid rgba(240,180,41,0.2);
+    border-radius: 24px;
+    padding: 4rem;
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .bundle-section::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,180,41,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .bundle-price-block {
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .bundle-original {
+    font-size: 1.8rem; color: var(--muted);
+    text-decoration: line-through; font-family: 'Syne', sans-serif;
+  }
+  .bundle-new {
+    font-size: 4rem; font-weight: 800; color: var(--gold);
+    font-family: 'Syne', sans-serif; line-height: 1;
+  }
+  .bundle-save {
+    background: rgba(16,185,129,0.1); border: 1px solid var(--green);
+    color: var(--green); padding: 0.4rem 0.8rem; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600;
+  }
+  .bundle-items {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;
+    margin: 2rem 0;
+  }
+  .bundle-item {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    color: #cbd5e1; padding: 0.5rem 1rem; border-radius: 50px;
+    font-size: 0.85rem;
+  }
+
+  /* HOW IT WORKS */
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; position: relative;
+  }
+  .step-card {
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 2rem; text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .step-card:hover { transform: translateY(-6px); border-color: rgba(240,180,41,0.25); }
+  .step-num {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(240,180,41,0.1); border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold); font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .step-title { font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 1.8rem;
+    transition: transform 0.2s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); }
+  .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testimonial-text { color: #cbd5e1; font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 10px; }
+  .author-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; background: rgba(240,180,41,0.15); color: var(--gold);
+  }
+  .author-name { font-size: 0.88rem; font-weight: 600; }
+  .author-loc { font-size: 0.78rem; color: var(--muted); }
+
+  /* CONTACT / ORDER */
+  .contact-section { background: var(--navy2); border-top: 1px solid rgba(255,255,255,0.06); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-info h2 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-method {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 1rem 1.2rem;
+    text-decoration: none; color: var(--white);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-method:hover { border-color: rgba(240,180,41,0.3); transform: translateX(4px); }
+  .contact-method-icon { font-size: 1.3rem; }
+  .contact-method-label { font-size: 0.78rem; color: var(--muted); }
+  .contact-method-value { font-size: 0.92rem; font-weight: 500; }
+  .order-form { background: var(--card-bg); border: 1px solid rgba(240,180,41,0.15); border-radius: 20px; padding: 2.5rem; }
+  .order-form h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+    padding: 0.75rem 1rem; color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: rgba(240,180,41,0.4);
+  }
+  .form-group select option { background: var(--navy2); }
+  .submit-btn {
+    width: 100%; background: var(--gold); color: var(--navy);
+    padding: 0.9rem; border-radius: 50px; border: none;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+    transition: all 0.2s; font-family: 'Syne', sans-serif;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(240,180,41,0.35); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2.5rem 6%;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted); font-size: 0.85rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .bundle-section { padding: 2.5rem 1.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .bundle-new { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Sanjwal<span>CreatorTools</span></div>
+  <ul class="nav-links">
+    <li><a href="#products">Templates</a></li>
+    <li><a href="#bundle">Bundle Deal</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#contact">Order</a></li>
+  </ul>
+  <a href="#bundle" class="nav-cta">Get Bundle — $47</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Professional Digital Templates for Creators Worldwide</div>
+  <h1>Tools Built for<br><span class="gold">Side Hustlers</span><br>& Creators</h1>
+  <p class="hero-sub">Stop wasting time on spreadsheets from scratch. Download professional, ready-to-use templates built specifically for freelancers, content creators, and small business owners.</p>
+  <div class="hero-btns">
+    <a href="#products" class="btn-primary">Browse Templates</a>
+    <a href="#bundle" class="btn-secondary">View Bundle Deal</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Professional Templates</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Extra Software Needed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30s</div>
+      <div class="stat-label">Instant Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-tag">Our Templates</div>
+  <h2 class="section-title">Everything You Need to<br>Run Your Business</h2>
+  <p class="section-sub">Professional Google Sheets templates. No design skills needed. Instant download. Works on any device globally.</p>
+
+  <div class="products-grid">
+
+    <!-- Template 1 -->
+    <div class="product-card" id="card1">
+      <div class="bestseller">Best Seller</div>
+      <div class="card-icon icon-gold">💰</div>
+      <div class="card-title">Side Hustler Budget Tracker</div>
+      <div class="card-desc">Track every dollar in and out of your side hustle. Know exactly where your money goes every month.</div>
+      <ul class="card-features">
+        <li>Automatic running balance formula</li>
+        <li>Income vs expense color coding</li>
+        <li>30-day transaction tracker</li>
+        <li>Summary dashboard at top</li>
+        <li>Savings rate calculator</li>
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">$17 <span>one-time</span></div>
+        <a href="#contact" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="product-card" id="card2">
+      <div class="card-icon icon-blue">📄</div>
+      <div class="card-title">Freelance Invoice & Expense Tracker</div>
+      <div class="card-desc">Track every client invoice, payment status, and expense. Never miss a payment again.</div>
+      <ul class="card-features">
+        <li>Invoice status — Paid, Unpaid, Overdue</li>
+        <li>Color-coded payment tracking</li>
+        <li>Separate expense tracker tab</li>
+        <li>Auto-calculated totals</li>
+        <li>Client notes & follow-ups</li>
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">$19 <span>one-time</span></div>
+        <a href="#contact" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="product-card" id="card3">
+      <div class="card-icon icon-green">📅</div>
+      <div class="card-title">Content Calendar for Creators</div>
+      <div class="card-desc">Plan 90 days of content across all platforms in one place. Never run out of content ideas again.</div>
+      <ul class="card-features">
+        <li>Supports 8 platforms (IG, TikTok, YT...)</li>
+        <li>Status tracking — Planned to Published</li>
+        <li>Built-in Ideas Bank tab</li>
+        <li>Analytics tracker tab</li>
+        <li>Caption & hashtag columns</li>
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">$19 <span>one-time</span></div>
+        <a href="#contact" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Template 4 -->
+    <div class="product-card" id="card4">
+      <div class="card-icon icon-purple">📊</div>
+      <div class="card-title">Social Media Analytics Tracker</div>
+      <div class="card-desc">Track your growth across all platforms in one dashboard. Know exactly what content works.</div>
+      <ul class="card-features">
+        <li>Multi-platform performance dashboard</li>
+        <li>Monthly follower growth tracker</li>
+        <li>Per-post analytics (views, likes, shares)</li>
+        <li>Platform comparison tab</li>
+        <li>Auto-calculated totals & averages</li>
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">$17 <span>one-time</span></div>
+        <a href="#contact" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Template 5 -->
+    <div class="product-card" id="card5">
+      <div class="card-icon icon-pink">👥</div>
+      <div class="card-title">Freelancer Client Database</div>
+      <div class="card-desc">Manage all your clients, projects, and revenue in one professional system. Your mini CRM.</div>
+      <ul class="card-features">
+        <li>Full client profile database</li>
+        <li>Project status tracker</li>
+        <li>Monthly revenue tracker</li>
+        <li>VIP client flagging system</li>
+        <li>Outstanding payment alerts</li>
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">$16 <span>one-time</span></div>
+        <a href="#contact" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section id="bundle" style="padding: 0 6% 6rem;">
+  <div class="bundle-section">
+    <div class="section-tag">Limited Time Offer</div>
+    <h2 class="section-title">Get All 5 Templates<br>for One Price</h2>
+    <p style="color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.7;">Everything you need to manage your freelance business, content creation, and finances. Normally $88 — get the full bundle at a massive discount.</p>
+
+    <div class="bundle-price-block">
+      <div class="bundle-original">$88</div>
+      <div class="bundle-new">$47</div>
+      <div class="bundle-save">Save 47%</div>
+    </div>
+
+    <div class="bundle-items">
+      <div class="bundle-item">💰 Budget Tracker</div>
+      <div class="bundle-item">📄 Invoice Tracker</div>
+      <div class="bundle-item">📅 Content Calendar</div>
+      <div class="bundle-item">📊 Analytics Tracker</div>
+      <div class="bundle-item">👥 Client Database</div>
+    </div>
+
+    <a href="#contact" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.8rem;">Get Full Bundle — $47</a>
+    <p style="color: var(--muted); font-size: 0.82rem; margin-top: 1rem;">Instant delivery via email · Google Sheets format · Works worldwide</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-tag">Simple Process</div>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">Get your templates in under 2 minutes. No complicated setup.</p>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Choose Your Template</div>
+      <div class="step-desc">Pick the template you need or grab the full bundle for the best value.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Pay Securely</div>
+      <div class="step-desc">Pay via PayPal or any major card. 100% secure. 30-day money-back guarantee.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Get Instant Access</div>
+      <div class="step-desc">Receive your Google Sheets link via email within 30 seconds of payment.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-title">Start Using Today</div>
+      <div class="step-desc">Make a copy to your Google Drive and start managing your business like a pro.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-tag">Reviews</div>
+  <h2 class="section-title">Creators Love These Tools</h2>
+  <p class="section-sub">Join hundreds of creators and side hustlers using Sanjwal Creator Tools worldwide.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"The Invoice Tracker completely changed how I manage my freelance clients. I used to lose track of unpaid invoices all the time. Not anymore!"</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">JM</div>
+        <div>
+          <div class="author-name">James M.</div>
+          <div class="author-loc">Freelance Designer · United Kingdom</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"I got the full bundle and honestly it's worth 10x the price. The Content Calendar alone saved me hours every week. Highly recommend!"</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">AS</div>
+        <div>
+          <div class="author-name">Aisha S.</div>
+          <div class="author-loc">Content Creator · United States</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Super clean templates, very easy to use. The Budget Tracker helps me see exactly how much my side hustle makes vs spends. Game changer."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">RK</div>
+        <div>
+          <div class="author-name">Rahul K.</div>
+          <div class="author-loc">Side Hustler · Australia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / ORDER -->
+<section id="contact" class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">Order Now</div>
+      <h2>Ready to Get<br>Your Templates?</h2>
+      <p>Fill in the order form and we'll send your templates via email within 30 seconds. Any questions — reach out directly.</p>
+      <div class="contact-methods">
+        <a href="mailto:creatortools.sanjwal@gmail.com" class="contact-method">
+          <div class="contact-method-icon">✉️</div>
+          <div>
+            <div class="contact-method-label">Email Us</div>
+            <div class="contact-method-value">creatortools.sanjwal@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/message/yourwhatsapp" class="contact-method">
+          <div class="contact-method-icon">💬</div>
+          <div>
+            <div class="contact-method-label">WhatsApp</div>
+            <div class="contact-method-value">Chat with us directly</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="order-form">
+      <h3>Place Your Order</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Smith">
+      </div>
+      <div class="form-group">
+        <label>Email Address (we send templates here)</label>
+        <input type="email" placeholder="john@email.com">
+      </div>
+      <div class="form-group">
+        <label>Select Template</label>
+        <select>
+          <option value="">Choose a template...</option>
+          <option>Full Bundle — All 5 Templates ($47) ⭐ Best Value</option>
+          <option>Side Hustler Budget Tracker ($17)</option>
+          <option>Freelance Invoice & Expense Tracker ($19)</option>
+          <option>Content Calendar for Creators ($19)</option>
+          <option>Social Media Analytics Tracker ($17)</option>
+          <option>Freelancer Client Database ($16)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Any special requests? (optional)</label>
+        <textarea rows="2" placeholder="e.g. Currency in GBP, add extra columns..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleOrder()">Order via WhatsApp / Email →</button>
+      <p style="text-align:center; color: var(--muted); font-size: 0.78rem; margin-top: 1rem;">30-day money-back guarantee · Instant delivery · Secure payment</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--gold); margin-bottom:0.5rem;">Sanjwal Creator Tools</p>
+  <p>Professional templates for creators, freelancers & side hustlers worldwide.</p>
+  <p style="margin-top:0.8rem;">Made with ❤️ | <a href="mailto:creatortools.sanjwal@gmail.com">creatortools.sanjwal@gmail.com</a></p>
+</footer>
+
+<script>
+  // 3D CARD TILT EFFECT
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+  });
+
+  // ORDER HANDLER
+  function handleOrder() {
+    const name = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const template = document.querySelector('select').value;
+    if (!name || !email || !template) {
+      alert('Please fill in all required fields!');
+      return;
+    }
+    const message = `Hi! I'd like to order:\n\nName: ${name}\nEmail: ${email}\nTemplate: ${template}\n\nPlease send payment details. Thank you!`;
+    const whatsappUrl = `https://wa.me/YOUR_WHATSAPP_NUMBER?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = entry.target.style.transform || 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .step-card, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
