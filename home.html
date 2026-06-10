@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjwal Creator Tools — Professional Templates & Analytics Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --navy: #0a0f1e;
+    --navy2: #111827;
+    --navy3: #1a2235;
+    --gold: #f0b429;
+    --gold2: #ffd166;
+    --white: #f8fafc;
+    --gray: #94a3b8;
+    --green: #10b981;
+    --red: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,15,30,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,180,41,0.15);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 1.1rem;
+    color: var(--white); letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 0.85rem;
+    padding: 8px 20px; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.03em;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 100px 5% 60px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,180,41,0.08) 0%, transparent 70%);
+  }
+  .hero-inner { max-width: 760px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(240,180,41,0.1);
+    border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold); font-size: 0.78rem; font-weight: 600;
+    padding: 6px 16px; border-radius: 20px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 1.1rem; color: var(--gray);
+    line-height: 1.7; margin-bottom: 40px;
+    max-width: 560px; margin-left: auto; margin-right: auto;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 60px;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 0.95rem;
+    padding: 14px 32px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    font-weight: 600; font-size: 0.95rem;
+    padding: 14px 32px; border-radius: 8px;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; font-weight: 900; color: var(--gold);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 2px; }
+
+  /* SECTION COMMON */
+  section { padding: 80px 5%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--gray); font-size: 1rem; line-height: 1.6; max-width: 560px; }
+  .section-head { margin-bottom: 48px; }
+
+  /* APP SECTION */
+  .app-section { background: var(--navy2); }
+  .app-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto;
+  }
+  .app-features { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+  .app-feature {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .app-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(240,180,41,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .app-feature-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .app-feature-text p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+  .app-preview {
+    background: var(--navy3);
+    border: 1px solid rgba(240,180,41,0.15);
+    border-radius: 16px; padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .app-preview-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .app-logo { font-size: 1.2rem; }
+  .app-title { font-weight: 700; font-size: 0.9rem; }
+  .app-badge {
+    margin-left: auto; background: rgba(240,180,41,0.15);
+    color: var(--gold); font-size: 0.7rem; font-weight: 600;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .app-tabs {
+    display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .app-tab {
+    padding: 6px 12px; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 600;
+    background: rgba(255,255,255,0.05); color: var(--gray);
+  }
+  .app-tab.active { background: var(--gold); color: var(--navy); }
+  .app-tab.locked { opacity: 0.4; }
+  .app-metrics {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .app-metric {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px; padding: 12px;
+  }
+  .app-metric-val {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem; font-weight: 800; color: var(--gold);
+  }
+  .app-metric-label { font-size: 0.72rem; color: var(--gray); margin-top: 2px; }
+  .app-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; margin-top: 12px; }
+  .app-bar-fill { height: 100%; border-radius: 3px; background: var(--gold); }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; max-width: 700px; margin: 0 auto;
+  }
+  .pricing-card {
+    background: var(--navy3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 32px;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(240,180,41,0.05), var(--navy3));
+  }
+  .pricing-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--navy);
+    font-size: 0.7rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+  }
+  .pricing-plan { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .pricing-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem; font-weight: 900; margin-bottom: 4px;
+  }
+  .pricing-price span { font-size: 1rem; font-weight: 400; color: var(--gray); }
+  .pricing-features { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+  .pricing-features li { font-size: 0.88rem; display: flex; gap: 8px; align-items: flex-start; }
+  .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .pricing-features li.locked::before { content: '🔒'; }
+  .pricing-features li.locked { color: var(--gray); opacity: 0.5; }
+  .btn-plan {
+    width: 100%; padding: 12px; border-radius: 8px;
+    font-weight: 700; font-size: 0.9rem; text-align: center;
+    text-decoration: none; display: block; transition: all 0.2s;
+  }
+  .btn-plan-free { background: rgba(255,255,255,0.08); color: var(--white); }
+  .btn-plan-free:hover { background: rgba(255,255,255,0.15); }
+  .btn-plan-pro { background: var(--gold); color: var(--navy); }
+  .btn-plan-pro:hover { opacity: 0.9; }
+
+  /* TEMPLATES */
+  .templates-section { background: var(--navy2); }
+  .templates-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px; max-width: 1100px; margin: 0 auto;
+  }
+  .template-card {
+    background: var(--navy3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; overflow: hidden;
+    transition: all 0.3s; cursor: pointer;
+    position: relative;
+  }
+  .template-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+  .template-preview {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; position: relative; overflow: hidden;
+  }
+  .template-preview-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(10,15,30,0.5));
+  }
+  .template-body { padding: 20px; }
+  .template-tag {
+    font-size: 0.7rem; font-weight: 600; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .template-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+  .template-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.5; margin-bottom: 16px; }
+  .template-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .template-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem; font-weight: 800; color: var(--gold);
+  }
+  .btn-buy {
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 0.8rem;
+    padding: 8px 18px; border-radius: 6px;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-buy:hover { opacity: 0.85; }
+
+  /* BUNDLE */
+  .bundle-section {
+    background: linear-gradient(135deg, rgba(240,180,41,0.06), var(--navy));
+  }
+  .bundle-card {
+    max-width: 800px; margin: 0 auto;
+    background: var(--navy3);
+    border: 2px solid var(--gold);
+    border-radius: 20px; padding: 48px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .bundle-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+  }
+  .bundle-tag {
+    display: inline-block;
+    background: var(--gold); color: var(--navy);
+    font-size: 0.75rem; font-weight: 700;
+    padding: 5px 14px; border-radius: 20px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .bundle-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 900; margin-bottom: 12px;
+  }
+  .bundle-sub { color: var(--gray); margin-bottom: 32px; }
+  .bundle-includes {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center; margin-bottom: 32px;
+  }
+  .bundle-item {
+    background: rgba(240,180,41,0.08);
+    border: 1px solid rgba(240,180,41,0.2);
+    border-radius: 8px; padding: 8px 14px;
+    font-size: 0.83rem; font-weight: 500;
+  }
+  .bundle-pricing {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .bundle-original {
+    font-size: 1.1rem; color: var(--gray);
+    text-decoration: line-through;
+  }
+  .bundle-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem; font-weight: 900; color: var(--gold);
+  }
+  .bundle-save {
+    background: rgba(16,185,129,0.15);
+    color: var(--green); font-size: 0.8rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .btn-bundle {
+    display: inline-block;
+    background: var(--gold); color: var(--navy);
+    font-weight: 800; font-size: 1.05rem;
+    padding: 16px 48px; border-radius: 10px;
+    text-decoration: none; transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-bundle:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* HOW IT WORKS */
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px; max-width: 1000px; margin: 0 auto;
+  }
+  .step-card {
+    background: var(--navy3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px; padding: 28px;
+    text-align: center;
+  }
+  .step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem; font-weight: 900; color: var(--gold);
+    opacity: 0.4; margin-bottom: 12px;
+  }
+  .step-icon { font-size: 1.8rem; margin-bottom: 12px; }
+  .step-title { font-weight: 700; margin-bottom: 8px; }
+  .step-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    color: white; font-size: 2rem; cursor: pointer;
+    background: none; border: none; line-height: 1;
+  }
+  .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 5%;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; font-weight: 900; margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links {
+    display: flex; gap: 24px; justify-content: center;
+    flex-wrap: wrap; margin: 16px 0;
+  }
+  .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.88rem; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { color: var(--gray); font-size: 0.8rem; margin-top: 16px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .app-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .bundle-card { padding: 32px 20px; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">⚡ <span>SANJWAL</span> CREATOR TOOLS</div>
+  <a href="https://sanjwaltewari.gumroad.com/l/complete-creator-kit" target="_blank" class="nav-cta">Get Bundle — $47</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">⚡ Professional Tools for Creators Worldwide</div>
+    <h1>Stop guessing.<br><span>Start growing.</span></h1>
+    <p>Analytics dashboard and professional templates for creators, freelancers and side hustlers worldwide. Free to start. Everything you need in one place.</p>
+    <div class="hero-btns">
+      <a href="https://codingessentials12.github.io/sanjwal-creator-tools/creator-app.html" target="_blank" class="btn-primary">Try Dashboard Free</a>
+      <a href="https://sanjwaltewari.gumroad.com/l/complete-creator-kit" target="_blank" class="btn-secondary">Get All Templates — $47</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Products Available</div></div>
+      <div class="stat"><div class="stat-num">$88</div><div class="stat-label">Value in Bundle</div></div>
+      <div class="stat"><div class="stat-num">30</div><div class="stat-label">Day Money Back</div></div>
+      <div class="stat"><div class="stat-num">5min</div><div class="stat-label">Setup Time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="app-section">
+  <div class="app-grid">
+    <div>
+      <div class="section-label">Analytics Dashboard</div>
+      <h2 class="section-title">Track everything.<br>Grow faster.</h2>
+      <p class="section-sub">One dashboard for Instagram, YouTube, Pinterest and Reddit. See what's working and double down on it.</p>
+      <div class="app-features">
+        <div class="app-feature">
+          <div class="app-feature-icon">📊</div>
+          <div class="app-feature-text">
+            <h4>Multi-platform tracking</h4>
+            <p>Instagram, YouTube, Pinterest and Reddit all in one place</p>
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-feature-icon">🔔</div>
+          <div class="app-feature-text">
+            <h4>Smart notifications</h4>
+            <p>Get reminded to post and alerted when invoices are overdue</p>
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-feature-icon">💰</div>
+          <div class="app-feature-text">
+            <h4>Invoice tracker</h4>
+            <p>Never lose track of unpaid client invoices again</p>
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-feature-icon">🎯</div>
+          <div class="app-feature-text">
+            <h4>Goals and streaks</h4>
+            <p>Set posting goals and track your consistency streak</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-preview">
+      <div class="app-preview-header">
+        <div class="app-logo">⚡</div>
+        <div class="app-title">Creator Dashboard</div>
+        <div class="app-badge">PRO</div>
+      </div>
+      <div class="app-tabs">
+        <div class="app-tab active">Overview</div>
+        <div class="app-tab">Platforms</div>
+        <div class="app-tab">Content</div>
+        <div class="app-tab locked">Goals 🔒</div>
+        <div class="app-tab locked">Invoices 🔒</div>
+      </div>
+      <div class="app-metrics">
+        <div class="app-metric">
+          <div class="app-metric-val">24.8K</div>
+          <div class="app-metric-label">Total Views</div>
+          <div class="app-bar"><div class="app-bar-fill" style="width:72%"></div></div>
+        </div>
+        <div class="app-metric">
+          <div class="app-metric-val">1,247</div>
+          <div class="app-metric-label">Followers Gained</div>
+          <div class="app-bar"><div class="app-bar-fill" style="width:55%"></div></div>
+        </div>
+        <div class="app-metric">
+          <div class="app-metric-val">4.8%</div>
+          <div class="app-metric-label">Engagement Rate</div>
+          <div class="app-bar"><div class="app-bar-fill" style="width:48%"></div></div>
+        </div>
+        <div class="app-metric">
+          <div class="app-metric-val">18</div>
+          <div class="app-metric-label">Posts This Month</div>
+          <div class="app-bar"><div class="app-bar-fill" style="width:60%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="padding:80px 5%;">
+  <div style="text-align:center; max-width:600px; margin:0 auto 48px;">
+    <div class="section-label">Dashboard Pricing</div>
+    <h2 class="section-title">Free to start.<br>Pro to scale.</h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-plan">Free</div>
+      <div class="pricing-price">$0 <span>/ forever</span></div>
+      <ul class="pricing-features">
+        <li>Overview tab</li>
+        <li>Basic stats tracking</li>
+        <li>1 platform</li>
+        <li class="locked">Platforms tab</li>
+        <li class="locked">Content analytics</li>
+        <li class="locked">Goals and streaks</li>
+        <li class="locked">Invoice tracker</li>
+      </ul>
+      <a href="https://codingessentials12.github.io/sanjwal-creator-tools/creator-app.html" target="_blank" class="btn-plan btn-plan-free">Start Free</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-plan">Pro</div>
+      <div class="pricing-price">$9 <span>/ month</span></div>
+      <ul class="pricing-features">
+        <li>All 5 tabs unlocked</li>
+        <li>All 4 platforms</li>
+        <li>Smart notifications</li>
+        <li>Invoice tracker</li>
+        <li>Goals and streaks</li>
+        <li>AI recommendations</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://sanjwaltewari.gumroad.com/l/oacmvk" target="_blank" class="btn-plan btn-plan-pro">Get Pro — $9/mo</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="templates-section">
+  <div style="text-align:center; max-width:600px; margin:0 auto;" class="section-head">
+    <div class="section-label">Google Sheets Templates</div>
+    <h2 class="section-title">Professional tools.<br>Zero learning curve.</h2>
+    <p class="section-sub">Click any template to preview it. Instant delivery — start in 5 minutes.</p>
+  </div>
+  <div class="templates-grid">
+
+    <!-- Template 1 -->
+    <div class="template-card" onclick="openLightbox('t1')">
+      <div class="template-preview">
+        <div class="template-preview-bg"></div>
+        <span style="position:relative;z-index:1;">💰</span>
+      </div>
+      <div class="template-body">
+        <div class="template-tag">Budget & Finance</div>
+        <div class="template-name">Side Hustler Budget Tracker</div>
+        <div class="template-desc">Track every dollar automatically. Income, expenses, running balance — all calculated for you.</div>
+        <div class="template-footer">
+          <div class="template-price">$17</div>
+          <a href="https://sanjwaltewari.gumroad.com/l/xqskmc" target="_blank" class="btn-buy" onclick="event.stopPropagation()">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="template-card" onclick="openLightbox('t2')">
+      <div class="template-preview">
+        <div class="template-preview-bg"></div>
+        <span style="position:relative;z-index:1;">📋</span>
+      </div>
+      <div class="template-body">
+        <div class="template-tag">Invoicing</div>
+        <div class="template-name">Freelance Invoice & Expense Tracker</div>
+        <div class="template-desc">Never lose an unpaid invoice again. Track Paid, Unpaid and Overdue — color coded.</div>
+        <div class="template-footer">
+          <div class="template-price">$19</div>
+          <a href="https://sanjwaltewari.gumroad.com/l/avblcon" target="_blank" class="btn-buy" onclick="event.stopPropagation()">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="template-card" onclick="openLightbox('t3')">
+      <div class="template-preview">
+        <div class="template-preview-bg"></div>
+        <span style="position:relative;z-index:1;">📅</span>
+      </div>
+      <div class="template-body">
+        <div class="template-tag">Content Planning</div>
+        <div class="template-name">Content Calendar for Creators</div>
+        <div class="template-desc">Plan 30 days of content in 20 minutes. Instagram, YouTube, TikTok and more.</div>
+        <div class="template-footer">
+          <div class="template-price">$19</div>
+          <a href="https://sanjwaltewari.gumroad.com/l/hjamfj" target="_blank" class="btn-buy" onclick="event.stopPropagation()">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 4 -->
+    <div class="template-card" onclick="openLightbox('t4')">
+      <div class="template-preview">
+        <div class="template-preview-bg"></div>
+        <span style="position:relative;z-index:1;">📈</span>
+      </div>
+      <div class="template-body">
+        <div class="template-tag">Analytics</div>
+        <div class="template-name">Social Media Analytics Tracker</div>
+        <div class="template-desc">Know exactly what content works. Track views, likes, followers across all platforms.</div>
+        <div class="template-footer">
+          <div class="template-price">$17</div>
+          <a href="https://sanjwaltewari.gumroad.com/l/panhl" target="_blank" class="btn-buy" onclick="event.stopPropagation()">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 5 -->
+    <div class="template-card" onclick="openLightbox('t5')">
+      <div class="template-preview">
+        <div class="template-preview-bg"></div>
+        <span style="position:relative;z-index:1;">👥</span>
+      </div>
+      <div class="template-body">
+        <div class="template-tag">Client Management</div>
+        <div class="template-name">Freelancer Client Database</div>
+        <div class="template-desc">Manage all clients professionally. Track projects, revenue and deadlines in one place.</div>
+        <div class="template-footer">
+          <div class="template-price">$16</div>
+          <a href="https://sanjwaltewari.gumroad.com/l/pebpc" target="_blank" class="btn-buy" onclick="event.stopPropagation()">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section class="bundle-section">
+  <div class="bundle-card">
+    <div class="bundle-tag">🔥 Best Value</div>
+    <h2 class="bundle-title">Complete Creator Kit</h2>
+    <p class="bundle-sub">All 5 professional templates in one bundle. Save 47%.</p>
+    <div class="bundle-includes">
+      <div class="bundle-item">💰 Budget Tracker</div>
+      <div class="bundle-item">📋 Invoice Tracker</div>
+      <div class="bundle-item">📅 Content Calendar</div>
+      <div class="bundle-item">📈 Analytics Tracker</div>
+      <div class="bundle-item">👥 Client Database</div>
+    </div>
+    <div class="bundle-pricing">
+      <div class="bundle-original">$88 value</div>
+      <div class="bundle-price">$47</div>
+      <div class="bundle-save">Save 47%</div>
+    </div>
+    <a href="https://sanjwaltewari.gumroad.com/l/complete-creator-kit" target="_blank" class="btn-bundle">Get Complete Bundle — $47</a>
+    <p style="color:var(--gray);font-size:0.8rem;margin-top:16px;">✅ Instant delivery &nbsp;·&nbsp; ✅ 30-day money back &nbsp;·&nbsp; ✅ Free updates</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div style="text-align:center;margin-bottom:48px;">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Up and running in 5 minutes</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">🛒</div>
+      <div class="step-title">Purchase</div>
+      <div class="step-desc">Click any Buy Now button. Secure checkout via Gumroad. Global cards accepted.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">📧</div>
+      <div class="step-title">Instant Delivery</div>
+      <div class="step-desc">Get your template link instantly via email. No waiting.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Make a Copy</div>
+      <div class="step-desc">Open in Google Sheets. File → Make a copy. Saved to your Drive.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon">🚀</div>
+      <div class="step-title">Start Using</div>
+      <div class="step-desc">Start tracking immediately. Everything is set up and ready to go.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚡ <span>SANJWAL</span> CREATOR TOOLS</div>
+  <p style="color:var(--gray);font-size:0.88rem;">Professional templates and analytics for creators worldwide</p>
+  <div class="footer-links">
+    <a href="https://sanjwaltewari.gumroad.com" target="_blank">Gumroad Store</a>
+    <a href="https://codingessentials12.github.io/sanjwal-creator-tools/creator-app.html" target="_blank">Free Dashboard</a>
+    <a href="https://sanjwaltewari.gumroad.com/l/complete-creator-kit" target="_blank">Bundle Deal</a>
+    <a href="mailto:creatortools.sanjwal@gmail.com">Contact</a>
+    <a href="https://wa.me/919028793533" target="_blank">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2026 Sanjwal Creator Tools · Made with ⚡ from India</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Template Preview">
+</div>
+
+<script>
+  const previews = {
+    t1: 'https://via.placeholder.com/800x500/0a0f1e/f0b429?text=Budget+Tracker+Preview',
+    t2: 'https://via.placeholder.com/800x500/0a0f1e/f0b429?text=Invoice+Tracker+Preview',
+    t3: 'https://via.placeholder.com/800x500/0a0f1e/f0b429?text=Content+Calendar+Preview',
+    t4: 'https://via.placeholder.com/800x500/0a0f1e/f0b429?text=Analytics+Tracker+Preview',
+    t5: 'https://via.placeholder.com/800x500/0a0f1e/f0b429?text=Client+Database+Preview'
+  };
+
+  function openLightbox(id) {
+    document.getElementById('lightbox-img').src = previews[id];
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
